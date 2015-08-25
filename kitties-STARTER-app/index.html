@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html data-ng-app="kittiesApp">
+	<head>
+
+		<title>Kitties App!</title>
+
+
+		<link rel="stylesheet" href="css/style.css">
+
+
+	</head>
+
+	<body>
+		<h1>Kitties Swap Meet!</h1>
+		<div id="container" data-ng-controller="KittiesController as kitties">
+			<div class="left-container">
+				<h1>Kitties for Adoption</h1>
+				<div class="dashed" ng-repeat="k in kitties.kittiesList | filter: k.adopted = false">
+					<p>{{k.catName}}</p>
+					<p>{{k.monthsOld}}</p>
+					<p>{{k.gender}}</p>
+					<img src="{{k.image}}" alt="k.image" />
+					<p>Adopt me?</p><input type="checkbox" ng-model="k.adopted">
+				</div>
+			</div>
+			<div class="right-container">
+				<h1>Adopted Kitties</h1>
+				<div class="dashed" ng-repeat="k in kitties.kittiesList | filter: k.adopted = true">
+					<p>{{k.catName}}</p>
+					<p>{{k.monthsOld}}</p>
+					<p>{{k.gender}}</p>
+					<img src="{{k.image}}" alt="k.image" />
+					<p>Abandon me?</p><input type="checkbox" ng-model="k.adopted">
+				</div>
+			</div>
+
+		</div>
+		<script type="text/javascript">
+			console.log(angular);
+		</script>
+
+		<!--Sourcing Angular-->
+		<script src="./js/angular.js" charset="utf-8"></script>
+		<!-- Source in module -->
+		<script src="./js/main.js" charset="utf-8"></script>
+		<!-- Source in controller -->
+		<script src="./js/KittiesController.js" charset="utf-8"></script>
+	</body>
+</html>
